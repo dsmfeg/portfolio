@@ -1,6 +1,77 @@
+:root {
+  --color-accent: #596aeb;
+}
+
 body {
   /* Set line height to 1.5 times the font size
 	   and use the OS’s UI font as the website font
 	 */
   font: 100%/1.5 system-ui;
+  max-width: 100ch;
+  margin-inline: auto;
+  padding: 10ch;
+}
+
+nav {
+  display: flex;
+  margin-bottom: 1em;
+  border-bottom: 1px;
+  border-bottom-style: solid;
+  border-color: rgb(128, 126, 126);
+}
+
+nav ul {
+  display: contents;
+}
+
+nav ul a {
+  padding: 0.5em;
+  text-align: center;
+  color: inherit;
+  text-decoration: none;
+  flex: 1;
+}
+
+.current{
+  border-bottom: 0.4em;
+  border-bottom-style: solid;
+  padding-bottom: 5px;
+  border-color: rgb(128, 126, 126);
+}
+
+a:hover{
+  border-bottom: 0.4em;
+  border-bottom-style: solid;
+  padding-bottom: 5px;
+  border-color: var(--color-accent);
+  background-color: #cbcfef;
+}
+
+form {
+  font: inherit;
+  display:grid;
+  grid-template-columns: auto 1fr;
+  gap: 1em;
+}
+
+form label{
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+}
+
+.projects{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+}
+
+.projects article{
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  gap: 1em;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.projects h2{
+  margin: 0
 }

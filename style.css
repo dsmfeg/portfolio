@@ -1,5 +1,6 @@
 :root {
   --color-accent: #596aeb;
+  color-scheme: light dark;
 }
 
 body {
@@ -17,18 +18,14 @@ nav {
   margin-bottom: 1em;
   border-bottom: 1px;
   border-bottom-style: solid;
-  border-color: rgb(128, 126, 126);
+  border-bottom-color: oklch(50% 10% 200 / 40%);
 
-  ul {
-    display: contents;
-
-    a {
-      padding: 0.5em;
-      text-align: center;
-      color: inherit;
-      text-decoration: none;
-      flex: 1;
-    }
+  a {
+    padding: 0.5em;
+    text-align: center;
+    color: inherit;
+    text-decoration: none;
+    flex: 1;
   }
 }
 
@@ -36,7 +33,7 @@ nav {
   border-bottom: 0.4em;
   border-bottom-style: solid;
   padding-bottom: 5px;
-  border-color: rgb(128, 126, 126);
+  border-bottom-color: oklch(50% 10% 200 / 40%);
 }
 
 a:hover{
@@ -44,7 +41,7 @@ a:hover{
   border-bottom-style: solid;
   padding-bottom: 5px;
   border-color: var(--color-accent);
-  background-color: #cbcfef;
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
 
 form {
@@ -79,4 +76,11 @@ form {
 
 .resHead{
   text-align: center;
+}
+
+.color-scheme{
+  position: absolute;
+  top: 1rem;
+  bottom: 1rem;
+  font-size: 80%;
 }

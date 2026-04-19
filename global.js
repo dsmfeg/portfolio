@@ -17,10 +17,10 @@
 
 // Navigation element
 let pages = [
-    { url: '', title: 'Home' },
-    { url: 'projects/', title: 'Projects' },
-    { url: 'Resume/', title: 'Resume' },
-    { url: 'contact/', title: 'Contact Me' },
+    { url: 'index.html', title: 'Home' },
+    { url: 'projects/index.html', title: 'Projects' },
+    { url: 'Resume/index.html', title: 'Resume' },
+    { url: 'contact/index.html', title: 'Contact Me' },
 ];
 
 let nav = document.createElement('nav');

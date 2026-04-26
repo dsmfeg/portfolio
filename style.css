@@ -72,6 +72,12 @@ form {
   h2{
     margin: 0
   }
+  
+  img {
+    width: 250px;
+    height: 150px;
+    object-fit: cover;
+  }
 }
 
 .resHead{

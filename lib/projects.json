@@ -2,19 +2,19 @@
     {
         "title": "Clue Boardgame in Java",
         "year": "2023",
-        "image": "./images/clue.avif",
+        "image": "../images/clue.avif",
         "description": "A Java implementation of the classic clue Boardgame."
     },
     {
         "title": "Get Music",
         "year": "2024",
-        "image": "./images/GetMusic.png",
+        "image": "../images/GetMusic.png",
         "description": "A website made in JavaScript, HTML and CSS, accessing a MongoDB database to store user information. It is intended to be a chatting website for music enjoyers, earning points that they can spend to unlock rewards."
     },
     {
         "title": "U.S. Blackout Anaylsis",
         "year": "2026",
-        "image": "./images/NaturalDisastersMapUS.webp",
+        "image": "../images/NaturalDisastersMapUS.webp",
         "description": "Data Analysis of weather effects on Blackouts across the U.S. from 2000 to 2006, using a Purdue University dataset"
     },
     {

@@ -1,0 +1,56 @@
+[
+    {
+        "title": "Clue Boardgame in Java",
+        "year": "2023",
+        "image": "./images/clue.avif",
+        "description": "A Java implementation of the classic clue Boardgame."
+    },
+    {
+        "title": "Get Music",
+        "year": "2024",
+        "image": "./images/GetMusic.png",
+        "description": "A website made in JavaScript, HTML and CSS, accessing a MongoDB database to store user information. It is intended to be a chatting website for music enjoyers, earning points that they can spend to unlock rewards."
+    },
+    {
+        "title": "U.S. Blackout Anaylsis",
+        "year": "2026",
+        "image": "./images/NaturalDisastersMapUS.webp",
+        "description": "Data Analysis of weather effects on Blackouts across the U.S. from 2000 to 2006, using a Purdue University dataset"
+    },
+    {
+        "title": "Odit minima aut eius.",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg"
+    },
+    {
+        "title": "Quisquam commodi dignissimos id.",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg"
+    },
+    {
+        "title": "Consequatur omnis fugit totam?",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg"
+    },
+    {
+        "title": "Sed incidunt quibusdam molestiae?",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg"
+    },
+    {
+        "title": "Quasi consequatur necessitatibus magni!",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg"
+    },
+    {
+        "title": "Quasi vitae ratione earum.",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg"
+    },
+    {
+        "title": "Corporis deleniti fuga quas?",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg"
+    },
+    {
+        "title": "Vitae mollitia totam odit!",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg"
+    },
+    {
+        "title": "Veritatis porro quod fuga!",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg"
+    }
+]

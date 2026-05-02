@@ -87,6 +87,58 @@ form {
 .color-scheme{
   position: absolute;
   top: 1rem;
-  bottom: 1rem;
   font-size: 80%;
+}
+
+#projects-pie-plot {
+  max-width: 20em;
+  margin-block: 2em;
+
+  overflow: visible;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.legend {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  background-color: color-mix(in oklch, #898989, canvas 85%);
+  border: 2px solid color-mix(in oklch, #5b5b5b, canvas 85%);
+}
+
+.legend-li {
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+  padding: 0.1em;
+}
+
+.swatch {
+  width: 1em;
+  aspect-ratio: 1 / 1;
+  background-color: var(--color);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+path {
+  cursor: pointer;
+  transition: 300ms;
+}
+
+svg:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
+.selected {
+  --color: oklch(60% 45% 0) !important;
+
+  &:is(path) {
+    fill: var(--color);
+  }
 }

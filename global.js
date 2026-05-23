@@ -1,34 +1,18 @@
-// console.log('IT’S ALIVE!');
-
-// function $$(selector, context = document) {
-//   return Array.from(context.querySelectorAll(selector));
-// }
-
-// let navLinks = $$("nav a")
-
-// let currentLink = navLinks.find(
-//   (a) => a.host === location.host && a.pathname === location.pathname,
-// );
-
-// if (currentLink) {
-//   // or if (currentLink !== undefined)
-//   currentLink.classList.add('current');
-// }
-
 // Navigation element
 let pages = [
     { url: 'index.html', title: 'Home' },
     { url: 'projects/index.html', title: 'Projects' },
     { url: 'Resume/index.html', title: 'Resume' },
     { url: 'contact/index.html', title: 'Contact Me' },
+    { url: 'meta/index.html', title: 'Meta' },
 ];
 
 let nav = document.createElement('nav');
 document.body.prepend(nav);
 
 const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
-    ? "/"                  // Local server
-    : "/portfolio/";         // GitHub Pages repo name
+    ? "/"
+    : "/portfolio/";
 
 for (let p of pages) {
     let url = p.url;
@@ -47,77 +31,71 @@ for (let p of pages) {
 document.body.insertAdjacentHTML(
   'afterbegin',
   `
-	<label class="color-scheme">
-		Theme:
-		<select>
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-            <option value="light dark">Automatic</option>
-		</select>
-	</label>`,
+  <label class="color-scheme">
+    Theme:
+    <select>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="light dark">Automatic</option>
+    </select>
+  </label>`,
 );
 
-let select = document.querySelector('.color-scheme select')
+let select = document.querySelector('.color-scheme select');
 
 if ('colorScheme' in localStorage) {
   const saved = localStorage.colorScheme;
-
   document.documentElement.style.setProperty('color-scheme', saved);
   select.value = saved;
 }
 
 select.addEventListener('input', function (event) {
   const value = event.target.value;
-
   document.documentElement.style.setProperty('color-scheme', value);
   localStorage.colorScheme = value;
 });
 
-
-// Projects JSON
+// Fetch JSON utility
 export async function fetchJSON(url) {
   try {
-    // Fetch the JSON file from the given URL
     const response = await fetch(url);
     if (!response.ok) {
-      throw new Error(`Failed to fetch projects: ${response.statusText}`);
+      throw new Error(`Failed to fetch: ${response.statusText}`);
     }
-    const data = await response.json();
-    return data;
+    return await response.json();
   } catch (error) {
     console.error('Error fetching or parsing JSON data:', error);
   }
 }
 
-// export function renderProjects(project, containerElement) {
-//   containerElement.innerHTML = '';
-//   const article = document.createElement('article');
-//   article.innerHTML = `
-//     <h3>${project.title}</h3>
-//     <img src="${project.image}" alt="${project.title}">
-//     <p>${project.description}</p>
-//   `;
-//   containerElement.appendChild(article);
-// }
-
+// Render projects — supports optional url field on each project
 export function renderProjects(projects, containerElement, headingLevel = 'h2') {
   containerElement.innerHTML = '';
   projects.forEach(project => {
     const article = document.createElement('article');
     const heading = document.createElement(headingLevel);
-    heading.textContent = project.title;
+
+    if (project.url) {
+      const link = document.createElement('a');
+      link.href = project.url;
+      link.target = '_blank';
+      link.textContent = project.title;
+      heading.appendChild(link);
+    } else {
+      heading.textContent = project.title;
+    }
 
     article.innerHTML = `
       <img src="${project.image}" alt="${project.title}">
-      <p>${project.description}</p>
-      <p>${project.year}</p>
+      <p>${project.description || ''}</p>
+      <p class="project-year">${project.year || ''}</p>
     `;
     article.prepend(heading);
     containerElement.appendChild(article);
   });
 }
 
-//Github API
+// GitHub API
 export async function fetchGithubData(username) {
   return fetchJSON(`https://api.github.com/users/${username}`);
 }

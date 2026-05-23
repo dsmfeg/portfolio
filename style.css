@@ -4,9 +4,6 @@
 }
 
 body {
-  /* Set line height to 1.5 times the font size
-	   and use the OS’s UI font as the website font
-	 */
   font: 100%/1.5 system-ui;
   max-width: 100ch;
   margin-inline: auto;
@@ -16,9 +13,7 @@ body {
 nav {
   display: flex;
   margin-bottom: 1em;
-  border-bottom: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: oklch(50% 10% 200 / 40%);
+  border-bottom: 1px solid oklch(50% 10% 200 / 40%);
 
   a {
     padding: 0.5em;
@@ -29,39 +24,37 @@ nav {
   }
 }
 
-.current{
-  border-bottom: 0.4em;
-  border-bottom-style: solid;
+.current {
+  border-bottom: 0.4em solid oklch(50% 10% 200 / 40%);
   padding-bottom: 5px;
-  border-bottom-color: oklch(50% 10% 200 / 40%);
 }
 
-a:hover{
-  border-bottom: 0.4em;
-  border-bottom-style: solid;
+a:hover {
+  border-bottom: 0.4em solid var(--color-accent);
   padding-bottom: 5px;
-  border-color: var(--color-accent);
   background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
 
 form {
   font: inherit;
-  display:grid;
+  display: grid;
   grid-template-columns: auto 1fr;
   gap: 1em;
 
-  label{
+  label {
     display: grid;
     grid-template-columns: subgrid;
     grid-column: 1 / -1;
   }
 }
 
-.projects{
+/* ── Projects grid ───────────────────────────────────────────── */
+
+.projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
 
-  article{
+  article {
     grid-template-rows: subgrid;
     grid-row: span 3;
     gap: 1em;
@@ -69,10 +62,8 @@ form {
     margin-right: 5px;
   }
 
-  h2{
-    margin: 0
-  }
-  
+  h2 { margin: 0; }
+
   img {
     width: 250px;
     height: 150px;
@@ -80,20 +71,28 @@ form {
   }
 }
 
-.resHead{
-  text-align: center;
+.project-year {
+  font-size: 0.85em;
+  color: oklch(50% 0% 0);
 }
 
-.color-scheme{
+/* ── Resume ──────────────────────────────────────────────────── */
+
+.resHead { text-align: center; }
+
+/* ── Theme switcher ──────────────────────────────────────────── */
+
+.color-scheme {
   position: absolute;
   top: 1rem;
   font-size: 80%;
 }
 
+/* ── Pie chart (projects page) ───────────────────────────────── */
+
 #projects-pie-plot {
   max-width: 20em;
   margin-block: 2em;
-
   overflow: visible;
 }
 
@@ -131,14 +130,188 @@ path {
   transition: 300ms;
 }
 
-svg:has(path:hover) path:not(:hover) {
-  opacity: 0.5;
-}
+svg:has(path:hover) path:not(:hover) { opacity: 0.5; }
 
 .selected {
   --color: oklch(60% 45% 0) !important;
+  &:is(path) { fill: var(--color); }
+}
 
-  &:is(path) {
-    fill: var(--color);
+/* ── Meta page ───────────────────────────────────────────────── */
+
+/* Stats dl */
+dl.stats {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25em 1em;
+  margin-block: 1em;
+
+  dt {
+    font-weight: bold;
+    color: oklch(50% 0% 0);
+    font-size: 0.85em;
   }
+}
+
+/* Time filter */
+.time-filter {
+  margin-block: 1em;
+
+  label {
+    display: flex;
+    align-items: baseline;
+    gap: 1em;
+    flex-wrap: wrap;
+  }
+
+  input[type="range"] { flex: 1; }
+
+  time {
+    margin-left: auto;
+    font-size: 0.9em;
+    color: oklch(45% 0% 0);
+  }
+}
+
+/* Scatterplot circles */
+circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+
+  @starting-style { r: 0; }
+}
+
+circle:hover { transform: scale(1.5); }
+
+circle.selected { fill: #ff6b6b; }
+
+/* Gridlines */
+.gridlines line {
+  stroke: oklch(70% 0% 0 / 30%);
+}
+.gridlines path { display: none; }
+
+/* Tooltip */
+dl.info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.2em 0.8em;
+  margin: 0;
+  transition-duration: 500ms;
+  transition-property: opacity, visibility;
+
+  dt {
+    font-size: 0.8em;
+    color: oklch(50% 0% 0);
+    font-weight: bold;
+  }
+  dd { margin: 0; }
+}
+
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.tooltip {
+  position: fixed;
+  background: color-mix(in oklch, canvas 85%, transparent);
+  backdrop-filter: blur(4px);
+  border: 1px solid oklch(70% 0% 0 / 30%);
+  box-shadow: 0 2px 8px oklch(0% 0% 0 / 20%);
+  border-radius: 6px;
+  padding: 0.6em 0.9em;
+  font-size: 0.85em;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Brush selection */
+@keyframes marching-ants {
+  to { stroke-dashoffset: -8; }
+}
+
+.selection {
+  fill-opacity: 0.1;
+  stroke: black;
+  stroke-opacity: 0.7;
+  stroke-dasharray: 5 3;
+  animation: marching-ants 2s linear infinite;
+}
+
+/* ── Scrollytelling layout ───────────────────────────────────── */
+
+#scrolly-1 {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+
+  > * { flex: 1; }
+}
+
+#scatter-story {
+  position: relative;
+
+  .step {
+    padding-bottom: 60vh;
+    font-size: 0.9em;
+    line-height: 1.6;
+    color: oklch(35% 0% 0);
+  }
+}
+
+#scatter-plot {
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: auto;
+  height: 80vh;
+  overflow: visible;
+}
+
+/* ── File unit visualization ─────────────────────────────────── */
+
+#files {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  margin-block: 1em;
+
+  > div {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    margin-block: 0.4em;
+  }
+
+  dt {
+    grid-column: 1;
+    font-size: 0.85em;
+
+    code { font-weight: bold; }
+
+    small {
+      display: block;
+      font-size: 0.8em;
+      opacity: 0.6;
+    }
+  }
+
+  dd {
+    grid-column: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    align-content: start;
+    gap: 0.15em;
+    padding-top: 0.6em;
+    margin-left: 0;
+  }
+}
+
+.loc {
+  width: 0.5em;
+  aspect-ratio: 1;
+  background: var(--color, steelblue);
+  border-radius: 50%;
 }

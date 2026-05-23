@@ -1,0 +1,23 @@
+[
+    {
+        "title": "Clue Boardgame in Java",
+        "year": "2023",
+        "image": "../images/clue.avif",
+        "description": "A Java implementation of the classic Clue board game.",
+        "url": "https://github.com/dsmfeg"
+    },
+    {
+        "title": "Get Music",
+        "year": "2024",
+        "image": "../images/GetMusic.png",
+        "description": "A website made in JavaScript, HTML and CSS, accessing a MongoDB database to store user information. Intended to be a chatting website for music enjoyers, earning points to unlock rewards.",
+        "url": "https://github.com/dsmfeg"
+    },
+    {
+        "title": "U.S. Blackout Analysis",
+        "year": "2026",
+        "image": "../images/NaturalDisastersMapUS.webp",
+        "description": "Data analysis of weather effects on blackouts across the U.S. from 2000 to 2006, using a Purdue University dataset.",
+        "url": "https://dsmfeg.github.io/U.S.-Blackout-Analysis/"
+    }
+]

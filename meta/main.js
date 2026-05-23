@@ -1,6 +1,9 @@
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 import scrollama from 'https://cdn.jsdelivr.net/npm/scrollama@3.2.0/+esm';
 
+// Top-level color scale used by file unit visualization
+const colors = d3.scaleOrdinal(d3.schemeTableau10);
+
 // ---------------------------------------------------------------------------
 // 1. Load & process data
 // ---------------------------------------------------------------------------
@@ -316,8 +319,6 @@ onTimeSliderChange();
 // ---------------------------------------------------------------------------
 // 7. File unit visualization (Lab 8)
 // ---------------------------------------------------------------------------
-
-let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
 function updateFileDisplay(filteredCommits) {
     let lines = filteredCommits.flatMap(d => d.lines);
